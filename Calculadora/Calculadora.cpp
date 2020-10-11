@@ -1,5 +1,5 @@
 /* Calculadora
-	Bruno Arturo López Pacheco
+	Bruno Arturo Lï¿½pez Pacheco
 */
 
 #include <iostream>
@@ -7,9 +7,9 @@
 using namespace std;
 
 int main() {
-	double n1, n2, suma, resta, division, multiplicacion;
+	double n1, n2, suma, resta, division, multiplicacion, modulo;
 	string operacion, respuesta;
-	cout << "¡Hola! Bienvenido a la calculadora" << endl;
+	cout << "ï¿½Hola! Bienvenido a la calculadora" << endl;
 	respuesta = "si";
 	while (respuesta == "si"){
 		cout << "Introduzca un numero: ";
@@ -38,8 +38,12 @@ int main() {
 				division = n1 / n2;
 				cout << "El resultado es: " << division << endl;
 			}
+		} 
+		else if (operacion == "%") {
+			modulo = n1 % n2;
+			cout << "El resultado es: " << modulo << endl;
 		}
-		cout << "¿Desea hacer otra operacion? ";
+		cout << "ï¿½Desea hacer otra operacion? ";
 		cin >> respuesta;
 	}
 	return 0;
