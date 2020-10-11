@@ -1,5 +1,5 @@
 /* Calculadora
-	Bruno Arturo Lï¿½pez Pacheco
+	Bruno Arturo López Pacheco
 */
 
 #include <iostream>
@@ -7,12 +7,13 @@
 using namespace std;
 
 int main() {
-	double n1, n2, suma, resta, division, multiplicacion, modulo;
+	float n1, n2, suma, resta, division, multiplicacion, modulo;
+	int numero1, numero2;
 	string operacion, respuesta;
-	cout << "ï¿½Hola! Bienvenido a la calculadora" << endl;
+	cout << "Este programa hace operaciones basicas entre dos numeros" << endl;
 	respuesta = "si";
 	while (respuesta == "si"){
-		cout << "Introduzca un numero: ";
+		cout << "Introduzca el primer numero: ";
 		cin >> n1;
 		cout << "Introduzca una operacion: ";
 		cin >> operacion;
@@ -20,15 +21,18 @@ int main() {
 		cin >> n2;
 		if (operacion == "+") {
 			suma = n1 + n2;
-			cout << "El resultado es: " << suma << endl;
+			cout << "El resultado es: " << endl;
+			cout << n1 << " + " << n2 << " = " << suma << endl;
 		}
 		else if (operacion == "-") {
 			resta = n1 - n2;
-			cout << "El resultado es: " << resta << endl;
+			cout << "El resultado es: " << endl;
+			cout << n1 << " - " << n2 << " = " << resta << endl;
 		}
 		else if (operacion == "*") {
 			multiplicacion = n1 * n2;
-			cout << "El resultado es: " << multiplicacion << endl;
+			cout << "El resultado es: " << endl;
+			cout << n1 << " * " << n2 << " = " << multiplicacion << endl;
 		}
 		else if (operacion == "/") {
 			if (n2 == 0) {
@@ -36,14 +40,18 @@ int main() {
 			}
 			else {
 				division = n1 / n2;
-				cout << "El resultado es: " << division << endl;
+				cout << "El resultado es: " << endl;
+				cout << n1 << " / " << n2 << " = " << division << endl;
 			}
-		} 
-		else if (operacion == "%") {
-			modulo = n1 % n2;
-			cout << "El resultado es: " << modulo << endl;
 		}
-		cout << "ï¿½Desea hacer otra operacion? ";
+		else if (operacion == "%"){
+			numero1 = n1;
+			numero2 = n2;
+			modulo = numero1%numero2;
+			cout << "El resultado es: " << endl;
+			cout << n1 << " % " << n2 << " = " << modulo << endl;
+		}
+		cout << "¿Desea hacer otra operacion? ";
 		cin >> respuesta;
 	}
 	return 0;
