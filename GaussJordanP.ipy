@@ -1,0 +1,113 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "GaussJordanP.ipynb",
+      "provenance": [],
+      "collapsed_sections": [],
+      "authorship_tag": "ABX9TyO8rRhXFQe+zbs4gRYvEhxp",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/brunolopez941/PracticasComputacionI/blob/main/GaussJordanP.ipy\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "eJJG8L5I88-P"
+      },
+      "source": [
+        "def determinante1(A):\r\n",
+        "    deter1 = (A[0][0] * A[1][1] * A[2][2] + A[0][1] * A[1][2] * A[2][0] + A[0][2] * A[1][0] * A[2][1]) - (A[2][0] * A[1][1] * A[0][2] + A[2][1] * A[1][2] * A[0][0] + A[2][2] * A[1][0] * A[0][1]);\r\n",
+        "    return deter1\r\n",
+        "\r\n",
+        "def determinante2(A):\r\n",
+        "    deter2=A[0][0]*A[1][1]-A[0][1]*A[1][0]\r\n",
+        "    return deter2\r\n",
+        "    \r\n",
+        "def tieneSolucion(A):\r\n",
+        "    if (len(A)==2):\r\n",
+        "        det = determinante2(A)\r\n",
+        "    elif(len(A)==3):\r\n",
+        "        det = determinante1(A)\r\n",
+        "    else:\r\n",
+        "        det = 0\r\n",
+        "    if (det!=0):\r\n",
+        "        return True\r\n",
+        "    else:\r\n",
+        "        return False\r\n",
+        "\r\n",
+        "def GaussJordan(A):\r\n",
+        "    for i in range(len(A)):\r\n",
+        "        for j in range(len(A)):\r\n",
+        "            if (A[i][i]!=0):\r\n",
+        "                aux = 0\r\n",
+        "            else:\r\n",
+        "                aux = 1\r\n",
+        "        if (aux==1):\r\n",
+        "            Aux = [0]\r\n",
+        "            for i in range(len(A)):\r\n",
+        "                for j in range(len(A)+1):\r\n",
+        "                    Aux[i][j]=A[i][j]\r\n",
+        "            for i in range(len(A)+1):\r\n",
+        "                for j in range(len(A)+1):\r\n",
+        "                    A[i][j]=Aux[i+1][j]\r\n",
+        "        for k in range(len(A)):\r\n",
+        "            factor = A[k][k]\r\n",
+        "            j = k\r\n",
+        "            for j in range(len(A)+1):\r\n",
+        "                A[k][j]=A[k][j]/factor\r\n",
+        "            for i in range(len(A)):\r\n",
+        "                if (i!=k):\r\n",
+        "                    factor = A[i][k]\r\n",
+        "                    for j in range(len(A)+1):\r\n",
+        "                        A[i][j]=A[i][j]-factor*A[k][j]\r\n",
+        "                        \r\n",
+        "                        \r\n",
+        "def llenarMatriz(n):\r\n",
+        "    A=[]\r\n",
+        "    for i in range(n):\r\n",
+        "        auxiliar=[]\r\n",
+        "        determinante=[]\r\n",
+        "        for j in range(n+1):\r\n",
+        "            x = input(f\"Valor de elemento [{i}][{j}]: \")\r\n",
+        "            auxiliar.append(float(x))\r\n",
+        "        A.append(auxiliar)\r\n",
+        "    return A\r\n",
+        "\r\n",
+        "def solucion(matriz):\r\n",
+        "    print(\"Solución: \")\r\n",
+        "    for i in range(len(matriz)):\r\n",
+        "        print(\"x\",i,\" = \",matriz[i][-1])\r\n",
+        "        \r\n",
+        "        \r\n",
+        "n = input(\"Número de ecuaciones: \")\r\n",
+        "print(\"\")\r\n",
+        "A = llenarMatriz(int(n))\r\n",
+        "if(tieneSolucion(A)==True):\r\n",
+        "    GaussJordan(A)\r\n",
+        "    print(\"\")\r\n",
+        "    solucion(A)\r\n",
+        "else:\r\n",
+        "    print(\"\")\r\n",
+        "    print(\"El sistema no tiene solución\")   "
+      ],
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
